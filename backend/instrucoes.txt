@@ -1,0 +1,5 @@
+npm install bcrypt cookie-parser cors express jsonwebtoken mongoose multer nodemon
+mongodb+srv://cursoJS:FV63iJ6sdtZyI69U@cluster0.wlelj6i.mongodb.net/getapet?retryWrites=true&w=majority
+
+FV63iJ6sdtZyI69U cursoJS
+
