@@ -100,11 +100,24 @@ module.exports = class UserController{
         if(req.headers.authorization){
             const token = getToken(req);
             const decoded = jwt.verify(token, process.env.nossosecret);
-            currentUser = await User.findById( decoded.id);
-            currentUser.password = undefined;
+            currentUser = await User.findById( decoded.id ).select('-password'); // utilizado para não trazer o campo da senha na resposta
         }else {
             currentUser = null;
         }
         res.status(200).send(currentUser);
+    }
+
+    static async getUserById(req, res){
+      const id = req.params.id;  
+      const user = await User.findById( id ).select('-password');
+
+      if(!user){
+        res.status(422).json({
+            message: 'Usuário não encontrado!'
+        })
+        return
+      }
+
+      res.status(200).json({ user });
     }
 }
