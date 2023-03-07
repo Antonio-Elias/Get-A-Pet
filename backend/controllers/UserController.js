@@ -116,8 +116,8 @@ module.exports = class UserController{
       if(!user){
         res.status(422).json({
             message: 'Usuário não encontrado!'
-        })
-        return
+        });
+        return;
       }
 
       res.status(200).json({ user });
