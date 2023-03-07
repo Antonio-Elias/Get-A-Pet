@@ -1,8 +1,18 @@
-console.log(10/0)
+function sum(a,b){
+    return console.log(a + b);
+}
 
-let n = 10
-let n2 = 0;
+function subtract(a , b){
+    return a - b;
+}
 
-let result = n / n2;
+function calculator(fn){
+    return function( a, b){
+        fn( a, b );
+        return function(b,c){
+            return subtract(b,c)
+        }
+    }
+}
 
-console.log(result);
+console.log( calculator(sum)( 5, 2)(2,2));
