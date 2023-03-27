@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import styles from './Profile.module.css';
 import formStyles from '../../form/Form.module.css';
 import Input from '../../form/input';
+import RoundedImage from '../../layout/Roundedimage';
 import useFlashMessage from '../../../hooks/useFlashMessage';
 
 function Profile(){
@@ -51,13 +52,13 @@ function Profile(){
         })
         setFlashMessage(data.message, msgType)
     }
-
+    console.log( 'env: '+process.env.REACT_APP_API);
     return(
         <section>
             <div className={styles.profile_header}>
                 <h1>Perfil</h1>
                 {(user.image || preview) && (
-                  <img src={ 
+                  <RoundedImage src={ 
                     preview ? URL.createObjectURL(preview) : `${process.env.REACT_APP_API}/images/users/${user.image}`}  
                     alt={user.name}
                   /> 
